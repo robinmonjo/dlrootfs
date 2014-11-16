@@ -20,7 +20,7 @@ var (
 
 func assertErrNil(err error, info string, t *testing.T) {
 	if err != nil {
-		fmt.Printf("[INFO] %q\n", info)
+		fmt.Printf("\n[INFO] %q\n", info)
 		t.Fatal(err)
 	}
 }

@@ -2,7 +2,7 @@ HARDWARE=$(shell uname -m)
 
 test:
 	go install
-	go test
+	sudo -E go test
 
 build:
 	go build
