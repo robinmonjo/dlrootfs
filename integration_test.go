@@ -62,7 +62,7 @@ func downloadImage(imageName, rootfsDest, credentials string, checkFs bool, asse
 
 	err = cmd.Wait()
 	assert(err, t)
-
+	fmt.Printf("Download ok ... ")
 	if !checkFs {
 		return
 	}
