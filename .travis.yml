@@ -1,0 +1,9 @@
+language: go
+
+env:
+	#DLROOTFS_CREDS
+	- secure: "WDxbeA3Cvlfuts3T01xSOd40qYwFPZRZblbK9ZjwDUJf7OM11+KP6zOHyP7sjhfiUcWXJ1UZl6U3cPLInthk5nCJluNLb6046OugfYhgKozG5J8c5L0Rknu99zqtu/L4mJKNWLndA62i67HkDQSyyv2OIGkNNYmDALILcl8Ipp4="
+
+install:
+	- sh vendor.sh
+	- export GOPATH=$GOPATH:$HOME/gopath/src/github.com/robinmonjo/dlrootfs/vendor
