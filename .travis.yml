@@ -1,7 +1,7 @@
 language: go
 
 env:
-  - SKIP_LHOWN=true
+  - SKIP_LCHOWN=true
   - secure: "WDxbeA3Cvlfuts3T01xSOd40qYwFPZRZblbK9ZjwDUJf7OM11+KP6zOHyP7sjhfiUcWXJ1UZl6U3cPLInthk5nCJluNLb6046OugfYhgKozG5J8c5L0Rknu99zqtu/L4mJKNWLndA62i67HkDQSyyv2OIGkNNYmDALILcl8Ipp4="
 
 install:
