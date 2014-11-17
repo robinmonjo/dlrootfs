@@ -18,14 +18,16 @@ var (
 	minimalLinuxRootDirs []string = []string{"bin", "dev", "etc", "home", "lib", "mnt", "opt", "proc", "root", "run", "sbin", "sys", "tmp", "usr", "var"}
 )
 
-func assertErrNil(err error, t *testing.T) {
+func assertErrNil(err error, info string, t *testing.T) {
 	if err != nil {
+		fmt.Printf("\n[INFO] %q\n", info)
 		t.Fatal(err)
 	}
 }
 
-func assertErrNotNil(err error, t *testing.T) {
+func assertErrNotNil(err error, info string, t *testing.T) {
 	if err == nil {
+		fmt.Printf("[INFO] %q\n", info)
 		t.Fatal(err)
 	}
 }
@@ -53,16 +55,12 @@ func Test_downloadPrivateImage(t *testing.T) {
 	fmt.Printf("Ok\n")
 }
 
-func downloadImage(imageName, rootfsDest, credentials string, checkFs bool, assert func(error, *testing.T), t *testing.T) {
+func downloadImage(imageName, rootfsDest, credentials string, checkFs bool, assert func(error, string, *testing.T), t *testing.T) {
 	defer os.RemoveAll(rootfsDest)
 
 	cmd := exec.Command(dlrootfsBinary, "-i", imageName, "-d", rootfsDest, "-u", credentials)
-	err := cmd.Start()
-	assertErrNil(err, t)
-
-	err = cmd.Wait()
-	assert(err, t)
-
+	out, err := cmd.CombinedOutput()
+	assert(err, string(out), t)
 	if !checkFs {
 		return
 	}
@@ -76,7 +74,7 @@ func downloadImage(imageName, rootfsDest, credentials string, checkFs bool, asse
 
 func checkDirExists(dir string, t *testing.T) {
 	src, err := os.Stat(dir)
-	assertErrNil(err, t)
+	assertErrNil(err, "", t)
 
 	if !src.IsDir() {
 		t.Fatal(dir, "not a directory")

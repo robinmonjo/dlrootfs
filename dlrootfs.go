@@ -115,7 +115,7 @@ func main() {
 	//do not extract metadata file (i.e: .wh..wh.aufs, .wh..wh.orph, .wh..wh.plnk)
 	//no lchown if not on linux
 	tarOptions := &archive.TarOptions{NoLchown: false, Excludes: []string{".wh."}}
-	if runtime.GOOS != "linux" {
+	if runtime.GOOS != "linux" || os.Getenv("SKIP_LCHOWN") == "true" {
 		tarOptions.NoLchown = true
 	}
 
