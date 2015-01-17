@@ -1,4 +1,10 @@
-## dlrootfs
+> **dlrootfs is now [cargo](https://github.com/robinmonjo/cargo)**
+
+> **cargo include dlrootfs features and brings the possibility to push on the docker hub**
+>
+
+
+## dlrootfs (deprecated see [cargo](https://github.com/robinmonjo/cargo))
 
 Download root file systems from the [docker hub](https://registry.hub.docker.com/) without docker
 
